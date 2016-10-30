@@ -147,9 +147,11 @@
   <ItemGroup>
     <ClCompile Include="LAB5_5152.cpp" />
     <ClCompile Include="Person.cpp" />
+    <ClCompile Include="PersonList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Person.h" />
+    <ClInclude Include="PersonList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

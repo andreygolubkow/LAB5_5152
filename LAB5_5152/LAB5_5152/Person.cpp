@@ -8,6 +8,15 @@ Person::Person(std::string firstName = "", std::string lastName = "", int age = 
 	sex = seX;
 }
 
+Person::Person(Person * person)
+{
+	Name = person->Name;
+	Surname = person->Surname;
+	Age = person->Age;
+	sex = person->sex;
+	
+}
+
 Person::Person() //From Keyboard
 {
 	std::cout << "\nEnter person first name:";
