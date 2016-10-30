@@ -27,10 +27,17 @@ Sex StrToSex(std::string sex)
 }
 
 
-std::istream& operator >> (std::istream& is, Sex& i)
+std::istream& operator >> (std::istream& stream, Sex &sex)
 {
-	int tmp;
-	if (is >> tmp)
-		i = static_cast<Sex>(tmp);
-	return is;
+	std::string s;
+	stream >> s;
+	if (s.compare("Male") == 0)
+	{
+		sex = Male;
+	}
+	else
+	{
+		sex = Female;
+	}
+	  return stream;
 }

@@ -148,10 +148,12 @@
     <ClCompile Include="LAB5_5152.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="PersonList.cpp" />
+    <ClCompile Include="Sex.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Person.h" />
     <ClInclude Include="PersonList.h" />
+    <ClInclude Include="Sex.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

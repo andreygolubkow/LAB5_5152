@@ -1,6 +1,6 @@
 #include "Person.h"
 
-Person::Person(std::string firstName = "", std::string lastName = "", int age = 0, Sex seX = Male) //On Create
+Person::Person(std::string firstName, std::string lastName, int age, Sex seX) //On Create
 {
 	Name = firstName;
 	Surname = lastName;
@@ -17,9 +17,10 @@ Person::Person(Person * person)
 	
 }
 
-Person::Person() //From Keyboard
+
+void Person::ReadPerson()
 {
-	std::cout << "\nEnter person first name:";
+	std::cout << "\nEnter person name:";
 	std::cin.clear();
 	std::cin >> Name;
 	std::cout << "\nEnter person surname:";

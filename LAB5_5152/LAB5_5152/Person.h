@@ -11,8 +11,7 @@ public:
 	Sex sex;
 	Person(std::string firstName = "", std::string lastName = "", int age = 0, Sex seX = Male); //On Create
 	Person(Person* person);
-	Person(); //From Keyboard
-
+	void ReadPerson();
 private:
 
 };
