@@ -11,6 +11,15 @@ PersonList::PersonList()
 	_count = 1;
 }
 
+PersonList::PersonList(Person* person)
+{
+	_head = new PersonListItem();
+	_head->Person = person;
+	_head->NextItem = nullptr;
+	_head->PrevItem = nullptr;
+	_count = 1;
+}
+
 PersonList::~PersonList()
 {
 
@@ -19,9 +28,8 @@ PersonList::~PersonList()
 void PersonList::Add(Person * person)
 {
 	PersonListItem* personListItem = new PersonListItem;
-	personListItem->Person = person;
+	personListItem->Person = new Person(person);
 	personListItem->NextItem = nullptr;
-
 	PersonListItem* currentItem = _head;
 	for (int i = 1; i < _count; i++)
 	{
@@ -35,16 +43,19 @@ void PersonList::Add(Person * person)
 
 Person* PersonList::Find(int index)
 {
+	
 	if (index > _count || index<1)
 	{
+		
 		return &_head->Person;
 	}
 	else
 	{
 		PersonListItem* currentItem;
 		currentItem = _head;
-		for (int i = 1; i < index; i++)
+		for (int i = 1; i <= index; i++)
 		{
+			
 			currentItem = currentItem->NextItem;
 		}
 		return &currentItem->Person;

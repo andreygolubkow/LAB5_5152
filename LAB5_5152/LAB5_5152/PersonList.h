@@ -5,6 +5,7 @@ class  PersonList
 {
 public:
 	 PersonList();
+	 PersonList(Person* person);
 	~ PersonList();
 	void Add(Person* person);
 	Person* Find(int index);
