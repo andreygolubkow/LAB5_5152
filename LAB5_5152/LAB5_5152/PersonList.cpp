@@ -43,21 +43,111 @@ void PersonList::Add(Person * person)
 
 Person* PersonList::Find(int index)
 {
-	
-	if (index > _count || index<1)
+	if (index > _count || index < 0)
 	{
-		
-		return &_head->Person;
+		return nullptr;
 	}
 	else
 	{
-		PersonListItem* currentItem;
-		currentItem = _head;
-		for (int i = 1; i <= index; i++)
+		if (index > _count || index < 1)
 		{
-			
+
+			return &_head->Person;
+		}
+		else
+		{
+			PersonListItem* currentItem;
+			currentItem = _head;
+			for (int i = 1; i <= index; i++)
+			{
+
+				currentItem = currentItem->NextItem;
+			}
+			return &currentItem->Person;
+		}
+	}
+}
+
+int PersonList::IndexOf(Person * person)
+{
+	int i = 0;
+	int result = -1;
+	for (i = 0; (i < _count); i++)
+	{
+		if ((*Find(i) == *person))
+		{
+			result = i;
+		}
+	}
+	
+	return result;
+}
+
+void PersonList::Remove(Person * person)
+{
+	int index = IndexOf(person);
+	if (index == 0)
+	{
+		PersonListItem * pTmpPointer = _head;
+
+		_head = _head->NextItem;
+		_head->PrevItem = nullptr;
+		delete pTmpPointer;
+		_count--;
+	} else
+	if (index == _count-1)
+	{
+		PersonListItem* currentItem = _head;
+		for (int i = 1; i <= _count-1; i++)
+		{
 			currentItem = currentItem->NextItem;
 		}
-		return &currentItem->Person;
+		PersonListItem* currentTmpItem = currentItem;
+		currentItem = currentItem->PrevItem;
+		currentItem->NextItem = nullptr;
+		delete currentTmpItem;
+		_count--;
+	}
+	else
+	if (index >0)
+	{
+		PersonListItem* currentItem = _head;
+		for (int i = 1; i <=index; i++)
+		{
+			currentItem = currentItem->NextItem;
+		}
+		PersonListItem* currentTmpItem = currentItem;
+		currentItem->NextItem->PrevItem = currentItem->PrevItem;
+		currentItem->PrevItem->NextItem = currentItem->NextItem;
+		delete currentTmpItem;
+		_count--;
+	}
+}
+
+void PersonList::RemoveAt(int index)
+{
+}
+
+bool operator==(Person & p1, Person & p2)
+{
+	if ((p1.Age == p2.Age) && (p1.Name == p2.Name) && (p1.sex == p2.sex) && (p1.Surname == p2.Surname))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool operator!=(Person & p1, Person & p2)
+{
+	if ((p1.Age == p2.Age) && (p1.Name == p2.Name) && (p1.sex == p2.sex) && (p1.Surname == p2.Surname))
+	{
+		return false;
+	}
+	else
+	{
+		return true;
 	}
 }

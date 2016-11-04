@@ -9,10 +9,10 @@ public:
 	~ PersonList();
 	void Add(Person* person);
 	Person* Find(int index);
-	/*int IndexOf(Person* person);
+	int IndexOf(Person* person);
 	void Remove(Person* person);
 	void RemoveAt(int index);
-	void Clear();
+	/*void Clear();
 	int GetCount();
 	*/
 private:
@@ -24,5 +24,7 @@ private:
 	};
 	PersonListItem* _head;
 	int _count;
+	friend bool operator ==(Person &p1,Person &p2);
+	friend bool operator !=(Person &p1, Person &p2);
 };
 
