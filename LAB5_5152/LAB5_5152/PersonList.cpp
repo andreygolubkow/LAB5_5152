@@ -27,18 +27,31 @@ PersonList::~PersonList()
 
 void PersonList::Add(Person * person)
 {
-	PersonListItem* personListItem = new PersonListItem;
-	personListItem->Person = new Person(person);
-	personListItem->NextItem = nullptr;
-	PersonListItem* currentItem = _head;
-	for (int i = 1; i < _count; i++)
+	if (_count > 0)
 	{
+		PersonListItem* personListItem = new PersonListItem;
+		personListItem->Person = new Person(person);
+		personListItem->NextItem = nullptr;
+		PersonListItem* currentItem = _head;
+		for (int i = 1; i < _count; i++)
+		{
 
-		currentItem = currentItem->NextItem;
+			currentItem = currentItem->NextItem;
+		}
+		currentItem->NextItem = personListItem;
+		personListItem->PrevItem = currentItem;
+		_count++;
+	} else
+	if (_count == 0)
+	{
+		PersonListItem* personListItem = new PersonListItem;
+		personListItem->Person = new Person(person);
+		personListItem->NextItem = nullptr;
+		personListItem->PrevItem = nullptr;
+		_head = personListItem;
+		_count = 1;
 	}
-	currentItem->NextItem = personListItem;
-	personListItem->PrevItem = currentItem;
-	_count++;
+
 }
 
 Person* PersonList::Find(int index)
@@ -126,6 +139,22 @@ void PersonList::Remove(Person * person)
 
 void PersonList::RemoveAt(int index)
 {
+	Remove(Find(index));
+}
+
+int PersonList::GetCount()
+{
+	return _count;
+}
+
+void PersonList::Clear()
+{
+	for (int i = _count - 1; i > 0; i--)
+		RemoveAt(i);
+	_head->NextItem = nullptr;
+	delete _head;
+	_head = nullptr;
+	_count = 0;
 }
 
 bool operator==(Person & p1, Person & p2)

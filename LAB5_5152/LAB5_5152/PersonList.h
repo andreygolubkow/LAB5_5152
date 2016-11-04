@@ -12,9 +12,8 @@ public:
 	int IndexOf(Person* person);
 	void Remove(Person* person);
 	void RemoveAt(int index);
-	/*void Clear();
 	int GetCount();
-	*/
+	void Clear();
 private:
 	struct PersonListItem
 	{
