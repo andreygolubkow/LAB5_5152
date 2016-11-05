@@ -12,7 +12,7 @@ public:
 	Person(std::string firstName = "", std::string lastName = "", int age = 0, Sex seX = Male); //On Create
 	Person(Person* person);
 	void ReadPerson();
-
+	void FillRandomPerson();
 private:
 
 };
