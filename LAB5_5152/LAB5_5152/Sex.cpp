@@ -1,4 +1,4 @@
-#include "Sex.h"
+﻿#include "Sex.h"
 
 std::string SexToStr(Sex sex)
 {
@@ -40,4 +40,11 @@ std::istream& operator >> (std::istream& stream, Sex &sex)
 		sex = Female;
 	}
 	  return stream;
+}
+
+std::ostream & operator<<(std::ostream & os, Sex & sex)
+{
+	os << SexToStr(sex);
+	return os;
+	// TODO: вставьте здесь оператор return
 }

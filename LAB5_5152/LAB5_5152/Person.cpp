@@ -4,7 +4,7 @@ Person::Person(std::string firstName, std::string lastName, int age, Sex seX) //
 {
 	Name = firstName;
 	Surname = lastName;
-	Age = Age;
+	Age = age;
 	sex = seX;
 }
 
@@ -36,4 +36,10 @@ std::istream & operator >> (std::istream & is, Person & person)
 {
 	is >> person.Name>>person.Surname>>person.Age>>person.sex;
 	return is;
+}
+
+std::ostream & operator<<(std::ostream & os, Person const & person)
+{
+	os << "Name: "<<person.Name <<" Surname: "<< person.Surname <<" Age: "<< person.Age <<" Sex: "<< person.sex;
+	return os;
 }
