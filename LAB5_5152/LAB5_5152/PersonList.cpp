@@ -22,7 +22,10 @@ PersonList::PersonList(Person* person)
 
 PersonList::~PersonList()
 {
-
+	for (int i = _count; i > -1; i--)
+	{
+		Remove(Find(i));
+	}
 }
 
 void PersonList::Add(Person * person)
