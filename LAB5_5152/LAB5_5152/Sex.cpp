@@ -44,7 +44,15 @@ std::istream& operator >> (std::istream& stream, Sex &sex)
 
 std::ostream & operator<<(std::ostream & os, Sex & sex)
 {
-	os << SexToStr(sex);
+	switch (sex)
+	{
+	case (Male):
+		os<< "Male";
+	case (Female):
+		os<< "Female";
+	default:
+		os<<"";
+	}
 	return os;
 	// TODO: вставьте здесь оператор return
 }

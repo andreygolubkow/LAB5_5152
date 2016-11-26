@@ -22,10 +22,10 @@ PersonList::PersonList(Person* person)
 
 PersonList::~PersonList()
 {
-	for (int i = _count; i > -1; i--)
+/*	for (int i = _count; i > -1; i--)
 	{
 		Remove(Find(i));
-	}
+	}*/
 }
 
 void PersonList::Add(Person * person)
@@ -104,12 +104,14 @@ void PersonList::Remove(Person * person)
 	int index = IndexOf(person);
 	if (index == 0)
 	{
-		PersonListItem * pTmpPointer = _head;
-
-		_head = _head->NextItem;
-		_head->PrevItem = nullptr;
-		delete pTmpPointer;
-		_count--;
+		if (_head != nullptr)
+		{
+			PersonListItem * pTmpPointer = _head;
+			_head = _head->NextItem;
+			_head->PrevItem = nullptr;
+			delete pTmpPointer;
+			_count--;
+		}
 	} else
 	if (index == _count-1)
 	{
@@ -162,7 +164,8 @@ void PersonList::Clear()
 
 bool operator==(Person & p1, Person & p2)
 {
-	if ((p1.Age == p2.Age) && (p1.Name == p2.Name) && (p1.sex == p2.sex) && (p1.Surname == p2.Surname))
+	
+	if ((&p1!=nullptr && &p2 != nullptr)&&(p1.Age == p2.Age) && (p1.Name == p2.Name) && (p1.sex == p2.sex) && (p1.Surname == p2.Surname))
 	{
 		return true;
 	}
@@ -174,12 +177,5 @@ bool operator==(Person & p1, Person & p2)
 
 bool operator!=(Person & p1, Person & p2)
 {
-	if ((p1.Age == p2.Age) && (p1.Name == p2.Name) && (p1.sex == p2.sex) && (p1.Surname == p2.Surname))
-	{
-		return false;
-	}
-	else
-	{
-		return true;
-	}
+	return !(p1 == p2);
 }

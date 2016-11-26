@@ -1,10 +1,10 @@
-#pragma once
+﻿#pragma once
 #include <string>
 #include <iostream>
 #include <stdexcept>
 #include <algorithm>
 
-enum Sex
+enum Sex //Перечисление полов
 {
 	Male, Female
 };

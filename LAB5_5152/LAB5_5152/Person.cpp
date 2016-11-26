@@ -1,6 +1,6 @@
 ﻿#include "Person.h"
 
-Person::Person(std::string firstName, std::string lastName, int age, Sex seX) //On Create
+Person::Person(std::string firstName, std::string lastName, int age, Sex seX) //Конструктор
 {
 	Name = firstName;
 	Surname = lastName;
@@ -22,7 +22,7 @@ void Person::ReadPerson()
 {
 	std::cout << "\nEnter person name:";
 	std::cin.clear();
-	std::cin >> Name;
+	std::cin >> Name; //Читаем поля персоны с клавы
 	std::cout << "\nEnter person surname:";
 	std::cin >> Surname;
 	std::cout << "\nEnter person age:";
